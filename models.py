@@ -5,9 +5,10 @@ from google.appengine.ext import ndb
 
 
 class Hours(EndpointsModel):
-    _message_fields_schema = ('id', )
+    _message_fields_schema = ('id', 'monOpen', 'tueOpen', 'wedOpen', 'thursOpen', 'friOpen', 'satOpen', 'sunOpen',
+                              'monClose', 'tueClose', 'wedClose', 'thursClose', 'friClose', 'satClose', 'sunClose')
 
-    monOpen = ndb.TimeProperty(auto_now_add=True)
+    monOpen = ndb.TimeProperty()
     tueOpen = ndb.TimeProperty()
     wedOpen = ndb.TimeProperty()
     thursOpen = ndb.TimeProperty()
@@ -15,7 +16,7 @@ class Hours(EndpointsModel):
     satOpen = ndb.TimeProperty()
     sunOpen = ndb.TimeProperty()
 
-    monClose = ndb.TimeProperty(auto_now_add=True)
+    monClose = ndb.TimeProperty()
     tueClose = ndb.TimeProperty()
     wedClose = ndb.TimeProperty()
     thursClose = ndb.TimeProperty()
@@ -25,13 +26,12 @@ class Hours(EndpointsModel):
 
 
 class SafeZone(EndpointsModel):
-
     _message_fields_schema = ('id', 'title', 'location', 'hours', 'phone', 'occupancy', 'max_occupancy', 'extra_info')
 
     title = ndb.StringProperty()
     location = ndb.GeoPtProperty()
 
-    hours = ndb.IntegerProperty()
+    hours = ndb.StructuredProperty(Hours)
 
     phone = ndb.StringProperty()
 

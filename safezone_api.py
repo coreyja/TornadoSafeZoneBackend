@@ -5,10 +5,7 @@ from models import Hours, SafeZone
 @endpoints.api(name="safezones", version="v1", description="SafeZones API", hostname="TornadoSafeZone.appspot.com")
 class SafeZoneAPI(remote.Service):
 
-    @Hours.method(path="hours/insert", name="hours.insert", http_method="POST", user_required=False)
-    def hours_insert(self, hours):
-        hours.put()
-        return hours
+
 
     @SafeZone.method(path="safezone/insert", name="safezone.insert", http_method="POST", user_required=False)
     def safezone_insert(self, sz):
@@ -27,7 +24,17 @@ class SafeZoneAPI(remote.Service):
             raise endpoints.NotFoundException("The SafeZone specified was not found")
 
         sz.key.delete()
-        return SafeZone(name="deleted") # New SafeZone with deleted as name to show success
+        return SafeZone(title="deleted") # New SafeZone with deleted as name to show success
+
+
+    @Hours.method(path="hours/insert", name="hours.insert", http_method="POST", user_required=False)
+    def hours_insert(self, hours):
+        hours.put()
+        return hours
+
+    @Hours.query_method(query_fields=('limit', 'order', 'pageToken'), path="hours/list", name="hours.list", http_method="GET", user_required=False)
+    def hours_list(self, query):
+        return query
 
     @Hours.method(request_fields=('id', ), path="hours/delete/{id}", name="hours.delete", http_method="DELETE", user_required=False)
     def hours_delete(self, hours):
