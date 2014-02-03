@@ -3,11 +3,67 @@
 {% block content %}
 
     <form action="/_ah/api/safezones/v1/safezone/insert" method="post" id="insert-form">
+
         <label for="title">Title</label>
         <input type="text" name="title"><br>
 
-        <label for="id">ID</label>
-        <input type="text" name="id"><br>
+        <label for="phone">Phone Number</label>
+        <input type="text" name="phone"><br>
+
+        <div name="location">
+            <label for="lat">Latitide</label>
+            <input type="text" name="lat"><br>
+
+            <label for="lon">Longitude</label>
+            <input type="text" name="lon"><br>
+        </div>
+
+        <label for="occupancy">Occupancy</label>
+        <input type="text" name="occupancy"><br>
+
+        <label for="max_occupancy">Max Occupancy</label>
+        <input type="text" name="max_occupancy"><br>
+
+        <label for="extra_info">Extra Info</label>
+        <input type="text" name="extra_info"><br>
+
+        <div name="hours">
+            <label for="monOpen">Monday Open</label>
+            <input type="text" name="monOpen"><br>
+            <label for="monClose">Monday Close</label>
+            <input type="text" name="monClose"><br><br>
+
+            <label for="tueOpen">Tuesday Open</label>
+            <input type="text" name="tueOpen"><br>
+            <label for="tueClose">Tuesday Close</label>
+            <input type="text" name="tueClose"><br><br>
+
+            <label for="wedOpen">Wednesday Open</label>
+            <input type="text" name="wedOpen"><br>
+            <label for="wedClose">Wednesday Close</label>
+            <input type="text" name="wedClose"><br><br>
+
+            <label for="thursOpen">Thursday Open</label>
+            <input type="text" name="thursOpen"><br>
+            <label for="thursClose">Thursday Close</label>
+            <input type="text" name="thursClose"><br><br>
+
+            <label for="friOpen">Friday Open</label>
+            <input type="text" name="friOpen"><br>
+            <label for="friClose">Friday Close</label>
+            <input type="text" name="friClose"><br><br>
+
+            <label for="satOpen">Saturday Open</label>
+            <input type="text" name="satOpen"><br>
+            <label for="satClose">Saturday Close</label>
+            <input type="text" name="satClose"><br><br>
+
+            <label for="sunOpen">Sunday Open</label>
+            <input type="text" name="sunOpen"><br>
+            <label for="sunClose">Sunday Close</label>
+            <input type="text" name="sunClose"><br><br>
+        </div>
+
 
         <input type="button" id="submit-button" value="Insert">
     </form>

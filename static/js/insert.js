@@ -9,8 +9,19 @@ jQuery(function ($) {
             var data  = {};
 
             $(form).find('input[type="text"]').each(function () {
-               var name = $(this).attr('name')
-                data[name] = $(this).val()
+
+                var name = $(this).attr('name')
+
+                if ($(this).parent('[name]').length === 0){
+                    data[name] = $(this).val()
+                } else {
+                   var parentName = $(this).parent().attr('name')
+                    if (!(parentName in data)) {
+                        data[parentName] = {};
+                    }
+                    data[parentName][name] = $(this).val()
+                }
+
             });
 
             return data;
@@ -21,7 +32,7 @@ jQuery(function ($) {
         $.ajax({
             type: 'POST',
             url: form.attr('action'),
-            data: formToJson(form),
+            data: JSON.stringify(formToJson(form)),
             dataType: 'json',
             contentType: 'application/json',
 
