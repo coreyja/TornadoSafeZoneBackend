@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="715322ee-d0ac-4501-8f9c-2e8e4a2a4dd7" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="TornadoSafeZone.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -402,7 +401,11 @@
       <created>1391443810228</created>
       <updated>1391443810228</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="gitignoring .idea folder">
+      <created>1391444099177</created>
+      <updated>1391444099177</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -440,7 +443,8 @@
     <MESSAGE value="Updating git to my latest version" />
     <MESSAGE value="Added stuff to gitignore" />
     <MESSAGE value="Added simple main.html template" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added simple main.html template" />
+    <MESSAGE value="gitignoring .idea folder" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignoring .idea folder" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
