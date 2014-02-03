@@ -2,7 +2,7 @@ from google.appengine.ext import endpoints
 from protorpc import remote
 from models import Hours, SafeZone
 
-@endpoints.api(name="safezones", version="v1", description="SafeZones API", hostname="TornadoSafeZone.appspot.com")
+@endpoints.api(name="safezones", version="v1", description="SafeZones API", hostname="perfect-atrium-421.appspot.com")
 class SafeZoneAPI(remote.Service):
 
 
