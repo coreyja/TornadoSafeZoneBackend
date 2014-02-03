@@ -38,15 +38,15 @@ class MainHandler(webapp2.RequestHandler):
         }
 
 
-        template = JINJA_ENVIRONMENT.get_template('templates/main.html')
+        template = JINJA_ENVIRONMENT.get_template('templates/main.jinja2')
         self.response.write(template.render(template_args))
 
 
 class InsertHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.headers['Content-Type'] = 'text/plain'
 
-        self.response.write('Insert')
+        template = JINJA_ENVIRONMENT.get_template('templates/SafeZones/insert.jinja2')
+        self.response.write(template.render())
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
