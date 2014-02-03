@@ -2,4 +2,10 @@
 
 {% block content %}
     <h1>Tornado Safe Zone</h1>
+
+    <ul>
+        {% for sz in safezones %}
+        <li>{{ sz.title }}</li>
+        {% endfor %}
+    </ul>
 {% endblock %}

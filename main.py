@@ -31,7 +31,7 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
 
         safezone_query = SafeZone.query()
-        safezones = safezone_query.fetch(10)
+        safezones = safezone_query.fetch(100)
 
         template_args = {
             'safezones': safezones,
