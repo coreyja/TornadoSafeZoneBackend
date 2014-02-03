@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+{% autoescape true %}
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    {% for sz in safezones %}
+        <p>{{ sz.title }}</p>
+    {% endfor %}
+</body>
+</html>
+{% endautoescape %}
