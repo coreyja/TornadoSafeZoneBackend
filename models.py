@@ -39,3 +39,7 @@ class SafeZone(EndpointsModel):
     max_occupancy = ndb.IntegerProperty()
 
     extra_info = ndb.StringProperty()
+
+    def formatted_phone(self):
+
+        return  '(' + self.phone[0:3] + ') ' + self.phone[3:6] + '-' + self.phone[6:] if self.phone else ''

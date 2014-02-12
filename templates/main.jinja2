@@ -18,7 +18,7 @@
         {% for sz in safezones %}
             <tr>
                 <td><a href="/safezone/{{ sz.id }}">{{ sz.title }}</a></td>
-                <td>{{ sz.phone }}</td>
+                <td>{{ sz.formatted_phone() }}</td>
                 <td>{{ sz.lat }}</td>
                 <td>{{ sz.lon }}</td>
                 <td>{{ sz.occupancy }}</td>
