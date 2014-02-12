@@ -2,70 +2,134 @@
 
 {% block content %}
 
-    <form action="/_ah/api/safezones/v1/safezone/insert" method="post" id="insert-form">
+    <h1>Insert New SafeZone</h1>
 
-        <label for="title">Title</label>
-        <input type="text" name="title"><br>
+    <form action="/_ah/api/safezones/v1/safezone/insert" method="post" role="form" id="insert-form">
 
-        <label for="phone">Phone Number</label>
-        <input type="text" name="phone"><br>
+        <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" name="title" placeholder="Name" class="form-control">
+        </div>
 
-        <div name="location">
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="phone" name="phone" class="form-control" placeholder="(123) 555-1234">
+        </div>
+
+        <div class="form-group">
             <label for="lat">Latitide</label>
-            <input type="text" name="lat"><br>
+            <input type="text" name="lat" class="form-control" data-json-parent="location">
+        </div>
 
+        <div class="form-group">
             <label for="lon">Longitude</label>
-            <input type="text" name="lon"><br>
+            <input type="text" name="lon" class="form-control" data-json-parent="location">
         </div>
 
-        <label for="occupancy">Occupancy</label>
-        <input type="text" name="occupancy"><br>
-
-        <label for="max_occupancy">Max Occupancy</label>
-        <input type="text" name="max_occupancy"><br>
-
-        <label for="extra_info">Extra Info</label>
-        <input type="text" name="extra_info"><br>
-
-        <div name="hours">
-            <label for="monOpen">Monday Open</label>
-            <input type="text" name="monOpen"><br>
-            <label for="monClose">Monday Close</label>
-            <input type="text" name="monClose"><br><br>
-
-            <label for="tueOpen">Tuesday Open</label>
-            <input type="text" name="tueOpen"><br>
-            <label for="tueClose">Tuesday Close</label>
-            <input type="text" name="tueClose"><br><br>
-
-            <label for="wedOpen">Wednesday Open</label>
-            <input type="text" name="wedOpen"><br>
-            <label for="wedClose">Wednesday Close</label>
-            <input type="text" name="wedClose"><br><br>
-
-            <label for="thursOpen">Thursday Open</label>
-            <input type="text" name="thursOpen"><br>
-            <label for="thursClose">Thursday Close</label>
-            <input type="text" name="thursClose"><br><br>
-
-            <label for="friOpen">Friday Open</label>
-            <input type="text" name="friOpen"><br>
-            <label for="friClose">Friday Close</label>
-            <input type="text" name="friClose"><br><br>
-
-            <label for="satOpen">Saturday Open</label>
-            <input type="text" name="satOpen"><br>
-            <label for="satClose">Saturday Close</label>
-            <input type="text" name="satClose"><br><br>
-
-            <label for="sunOpen">Sunday Open</label>
-            <input type="text" name="sunOpen"><br>
-            <label for="sunClose">Sunday Close</label>
-            <input type="text" name="sunClose"><br><br>
+        <div class="form-group">
+            <label for="occupancy">Occupancy</label>
+            <input type="text" name="occupancy" class="form-control">
         </div>
 
+        <div class="form-group">
+            <label for="max_occupancy">Max Occupancy</label>
+            <input type="text" name="max_occupancy" class="form-control">
+        </div>
 
-        <input type="button" id="submit-button" value="Insert">
+        <div class="form-group">
+            <label for="extra_info">Extra Info</label>
+            <textarea name="extra_info"class="form-control" ></textarea>
+        </div>
+
+        <div class="container-fluid">
+            <h3>Hours</h3>
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="monOpen">Monday Open</label>
+                    <input type="time" name="monOpen" class="form-control" data-json-parent="hours">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="monClose">Monday Close</label>
+                    <input type="time" name="monClose" class="form-control" data-json-parent="hours">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="tueOpen">Tuesday Open</label>
+                    <input type="time" name="tueOpen" class="form-control" data-json-parent="hours">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="tueClose">Tuesday Close</label>
+                    <input type="time" name="tueClose" class="form-control" data-json-parent="hours">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="wedOpen">Wednesday Open</label>
+                    <input type="time" name="wedOpen" class="form-control" data-json-parent="hours">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="wedClose">Wednesday Close</label>
+                    <input type="time" name="wedClose" class="form-control" data-json-parent="hours">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="thursOpen">Thursday Open</label>
+                    <input type="time" name="thursOpen" class="form-control" data-json-parent="hours">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="thursClose">Thursday Close</label>
+                    <input type="time" name="thursClose" class="form-control" data-json-parent="hours">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="friOpen">Friday Open</label>
+                    <input type="time" name="friOpen" class="form-control" data-json-parent="hours">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="friClose">Friday Close</label>
+                    <input type="time" name="friClose" class="form-control" data-json-parent="hours">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="satOpen">Saturday Open</label>
+                    <input type="time" name="satOpen" class="form-control" data-json-parent="hours">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="satClose">Saturday Close</label>
+                    <input type="time" name="satClose" class="form-control" data-json-parent="hours">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="sunOpen">Sunday Open</label>
+                    <input type="time" name="sunOpen" class="form-control" data-json-parent="hours">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="sunClose">Sunday Close</label>
+                    <input type="time" name="sunClose" class="form-control" data-json-parent="hours">
+                </div>
+            </div>
+        </div>
+
+        <button type="button" id="submit-button" class="btn btn-primary">Submit</button>
     </form>
 
 {% endblock %}

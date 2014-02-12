@@ -8,18 +8,29 @@ jQuery(function ($) {
         var formToJson = function (form) {
             var data  = {};
 
-            $(form).find('input[type="text"]').each(function () {
+            $(form).find('input').each(function () {
 
-                var name = $(this).attr('name')
+                var name = $(this).attr('name');
+                var type = $(this).attr('type');
+                var val = $(this).val();
 
-                if ($(this).parent('[name]').length === 0){
-                    data[name] = $(this).val()
-                } else {
-                   var parentName = $(this).parent().attr('name')
-                    if (!(parentName in data)) {
-                        data[parentName] = {};
+                var jsonParent = $(this).attr('data-json-parent');
+
+                // If val doesn't exist then don't add anything to the json
+                if (val){
+                    // If it is a time type add the seconds thing to the end of val
+                    if (type === 'time') {
+                        val += ':00.0';
                     }
-                    data[parentName][name] = $(this).val()
+
+                    if (jsonParent){
+                        if (!(jsonParent in data)) {
+                            data[jsonParent] = {};
+                        }
+                        data[jsonParent][name] = $(this).val()
+                    } else {
+                        data[name] = $(this).val()
+                    }
                 }
 
             });
@@ -28,6 +39,13 @@ jQuery(function ($) {
         }
 
         var form = $('#insert-form');
+
+        var json = formToJson(form);
+
+        if (!json) {
+            console.log('tst');
+            return false;
+        }
 
         $.ajax({
             type: 'POST',
@@ -40,6 +58,8 @@ jQuery(function ($) {
                 console.log(resp);
             }
         });
+
+        console.log(formToJson(form));
 
         event.preventDefault();
         return false;
