@@ -26,9 +26,9 @@ jQuery(function ($) {
                     if (!(jsonParent in data)) {
                         data[jsonParent] = {};
                     }
-                    data[jsonParent][name] = val
+                    data[jsonParent][name] = $(this).val()
                 } else {
-                    data[name] = val
+                    data[name] = $(this).val()
                 }
             }
 
@@ -38,24 +38,15 @@ jQuery(function ($) {
     };
 
     $('#submit-button').on('click', function (event) {
-        var form = $('#insert-form');
-
-        var json = formToJson(form);
-
-        if (!json) {
-            return false;
-        }
+        var form = $('#delete-form');
 
         $.ajax({
-            type: 'POST',
+            type: 'DELETE',
             url: form.attr('action'),
-            data: JSON.stringify(formToJson(form)),
-            dataType: 'json',
             contentType: 'application/json',
 
             success: function (resp) {
-                console.log(resp['id']);
-                window.location.href = '/safezone/' + resp['id'];
+                setTimeout("window.location.replace('/')", 100);
             }
         });
 

@@ -48,7 +48,38 @@ class InsertHandler(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('templates/SafeZones/insert.jinja2')
         self.response.write(template.render())
 
+
+class EditHandler(webapp2.RequestHandler):
+    def get(self, id):
+
+        safezone = SafeZone.get_by_id(int(id))
+
+        if not safezone:
+            print(id)
+
+        template_args = {
+            'safezone': safezone,
+        }
+
+        template = JINJA_ENVIRONMENT.get_template('templates/SafeZones/edit.jinja2')
+        self.response.write(template.render(template_args))
+
+
+class SingleHandler(webapp2.RequestHandler):
+    def get(self, id):
+
+        safezone = SafeZone.get_by_id(int(id))
+
+        template_args = {
+            'safezone': safezone,
+        }
+
+        template = JINJA_ENVIRONMENT.get_template('templates/SafeZones/single.jinja2')
+        self.response.write(template.render(template_args))
+
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/insert', InsertHandler)
+    ('/insert', InsertHandler),
+    (r'/safezone/(.*)/edit', EditHandler),
+    (r'/safezone/(.*)', SingleHandler)
 ], debug=True)

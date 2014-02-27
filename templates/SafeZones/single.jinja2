@@ -1,0 +1,99 @@
+{% extends "templates/base.jinja2" %}
+
+{% block content %}
+
+
+    <div class="row">
+        <div class="col-md-10">
+             <h1>{{ safezone.title }}</h1>
+        </div>
+
+        <div class="col-md-1">
+            <form action="/_ah/api/safezones/v1/safezone/delete/{{ safezone.id }}" method="DELETE" role="form" id="delete-form">
+                <button type="button" id="submit-button" class="btn btn-danger">Delete</button>
+            </form>
+        </div>
+
+        <div class="col-md-1">
+            <a href="/safezone/{{ safezone.id }}/edit" class="btn btn-primary">Edit</a>
+        </div>
+
+    </div>
+
+
+
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Current Occupancy</th>
+                <th>Max Occupancy</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ safezone.title }}</td>
+            <td>{{ safezone.formatted_phone() }}</td>
+            <td>{{ safezone.lat }}</td>
+            <td>{{ safezone.lon }}</td>
+            <td>{{ safezone.occupancy }}</td>
+            <td>{{ safezone.max_occupancy }}</td>
+        </tr>
+        </tbody>
+
+    </table>
+
+    <div class="form-group">
+        <h4>Extra Info</h4>
+        <p>{{ safezone.extra_info|default('', true) }}</p>
+    </div>
+
+    <h3>Hours</h3>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+                <th>Sunday</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th>Open:</th>
+            <td>{{ safezone.hours.monOpen|default('', true) }}</td>
+            <td>{{ safezone.hours.tueOpen|default('', true) }}</td>
+            <td>{{ safezone.hours.wedOpen|default('', true) }}</td>
+            <td>{{ safezone.hours.thursOpen|default('', true) }}</td>
+            <td>{{ safezone.hours.friOpen|default('', true) }}</td>
+            <td>{{ safezone.hours.satOpen|default('', true) }}</td>
+            <td>{{ safezone.hours.sunOpen|default('', true) }}</td>
+        </tr>
+        <tr>
+            <th>Close:</th>
+            <td>{{ safezone.hours.monClose|default('', true) }}</td>
+            <td>{{ safezone.hours.tueClose|default('', true) }}</td>
+            <td>{{ safezone.hours.wedClose|default('', true) }}</td>
+            <td>{{ safezone.hours.thursClose|default('', true) }}</td>
+            <td>{{ safezone.hours.friClose|default('', true) }}</td>
+            <td>{{ safezone.hours.satClose|default('', true) }}</td>
+            <td>{{ safezone.hours.sunClose|default('', true) }}</td>
+        </tr>
+        </tbody>
+
+    </table>
+
+{% endblock %}
+
+{% block extra_js %}
+    <script src="/static/js/single.js"></script>
+{% endblock %}
